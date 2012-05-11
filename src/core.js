@@ -2279,11 +2279,20 @@ Strophe.Connection.prototype = {
             xmlns: Strophe.NS.HTTPBIND
         });
 
+        this._notifyIncrementRid(this.rid);
+
         if (this.sid !== null) {
             bodyWrap.attrs({sid: this.sid});
         }
 
         return bodyWrap;
+    },
+
+    /**
+     * Empty function to be overriden for usage. Called when connection rid
+     * is incremented with the new rid as parameter.
+     */
+    _notifyIncrementRid: function(){
     },
 
     /** PrivateFunction: _removeRequest
